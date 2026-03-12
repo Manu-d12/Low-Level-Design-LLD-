@@ -6,4 +6,8 @@ public class Vechicle {
     public Vechicle(DriveStrategy driveStrategy) {
         this.driveStrategy = driveStrategy;
     }
+
+    public void drive() {
+        driveStrategy.drive();
+    }
 }
