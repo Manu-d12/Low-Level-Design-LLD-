@@ -10,7 +10,7 @@ public class Main {
         TicTacToeGame game = new TicTacToeGame(
                     new Player("Diksha", PieceType.O),
                     new Player("Manoj", PieceType.X),
-                    20
+                    4
                 );
 
 
