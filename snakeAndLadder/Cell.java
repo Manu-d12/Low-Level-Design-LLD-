@@ -2,23 +2,15 @@ package snakeAndLadder;
 
 public class Cell {
     int cellNumber;
-    int destination;
+    Jump jump;
 
     public Cell(int cellNumber) {
         this.cellNumber = cellNumber;
-        this.destination = -1;
+        this.jump = null;
     }
 
     public void setCellNumber(int cellNumber) {
         this.cellNumber = cellNumber;
-    }
-
-    public void setDestination(int destination) {
-        this.destination = destination;
-    }
-
-    public int getDestination() {
-        return this.destination;
     }
 
     public int getCellNumber() {

@@ -2,6 +2,7 @@ package snakeAndLadder;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.Random;
 import java.util.Scanner;
 
 public class GameOrchestrator {
@@ -21,14 +22,33 @@ public class GameOrchestrator {
         this.players.add(player);
     }
 
-    public void addSnake(int snakeStart, int snakeEnd) {
-        Cell cell = this.board.getCell(snakeStart);
-        cell.setDestination(snakeEnd);
-    }
+    public void addSnakesAndLadders(int snakes, int ladders) {
 
-    public void addLadder(int ladderStart, int ladderEnd) {
-        Cell cell = this.board.getCell(ladderStart);
-        cell.setDestination(ladderEnd);
+        Random random = new Random();
+
+        while (snakes > 0) {
+            int snakeStart = random.nextInt(0, this.board.size() * this.board.size());
+            int snakeEnd = random.nextInt(0, this.board.size() * this.board.size());
+
+            if(snakeEnd >= snakeStart) continue;
+
+            Cell cell = this.board.getCell(snakeStart);
+            Jump jump = new Jump(snakeStart, snakeEnd);
+            cell.jump = jump;
+            --snakes;
+        }
+
+        while (ladders > 0) {
+            int ladderStart = random.nextInt(0, this.board.size() * this.board.size());
+            int ladderEnd = random.nextInt(0, this.board.size() * this.board.size());
+
+            if(ladderStart >= ladderEnd) continue;
+
+            Cell cell = this.board.getCell(ladderStart);
+            Jump jump = new Jump(ladderStart, ladderEnd);
+            cell.jump = jump;
+            --ladders;
+        }
     }
 
     public void start() {
@@ -51,7 +71,7 @@ public class GameOrchestrator {
             if(nextPos > boardSize * boardSize) continue;
 
             Cell cell = this.board.getCell(nextPos);
-            int cellDestination = cell.getDestination();
+            int cellDestination = cell.jump == null ? -1 : cell.jump.end;
 
             int finalPos = cellDestination == -1 ? nextPos : cellDestination;
 
