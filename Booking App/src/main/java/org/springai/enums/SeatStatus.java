@@ -1,4 +1,7 @@
 package org.springai.enums;
 
-public class SeatStatus {
+public enum SeatStatus {
+    AVAILABLE,
+    BOOKED,
+    LOCKED
 }
