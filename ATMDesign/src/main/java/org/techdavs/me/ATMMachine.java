@@ -4,9 +4,9 @@ import java.util.Map;
 
 public class ATMMachine {
 
-    public Map<String, Integer> currentMap = Map.of(
-           "TEN", 100,
-           "HUNDRED", 500
+    public Map<String, Integer> currencyMap = Map.of(
+            "TWO_THOUSANDS" , 3,
+            "FIVE_HUNDRED", 2
     );
 
     public ATMState state = new IdleState();

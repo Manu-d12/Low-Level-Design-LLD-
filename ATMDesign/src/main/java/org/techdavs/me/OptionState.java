@@ -7,11 +7,11 @@ public class OptionState extends ATMState {
     public static Scanner scanner = new Scanner(System.in);
 
     public OptionState(Card card) {
-       this.card = card;
+       super(card);
     }
 
     @Override
-    public void chooseOperation(String op, ATMMachine machine) {
+    public void chooseOperation(ATMMachine machine) {
         System.out.println("1. Withdraw...");
         System.out.println("2. Check Balance");
 

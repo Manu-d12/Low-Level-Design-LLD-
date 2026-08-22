@@ -2,8 +2,8 @@ package org.techdavs.me;
 
 public class Card {
     public String number;
-    public int pin;
-    public int balance = 2000;
+    public int pin = 1234;
+    public BankAccount account = new BankAccount();
 
     public boolean isValid() {
         // validation logic..
